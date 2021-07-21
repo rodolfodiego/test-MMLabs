@@ -1,0 +1,129 @@
+<div class="body-full">
+  <div class="mmlabs"><span>Processo Seletivo - MMLabs</span></div>
+  <div class="container mt-5" >
+    <div class="add-search">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmailModal" >Cadastrar e-mail</button>
+
+      <div class="col-md-4 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Pesquisar</span>
+          </div>
+          <input type="text" class="form-control" (keyup)="getEmailsBySearch($event.target.value)">
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped"  >
+      <thead>
+        <tr>
+          <th class="t-small">Assunto</th>
+          <th class="t-small hidden">Endereço de email</th>
+          <th class="t-small hidden">Messagem</th>
+          <th class="t-small hidden">Ultima atualização</th>
+          <th class="t-small ">Excluir/Editar</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let email of emails let j=index" data-toggle="collapse" [attr.data-target]="'#collapseExample'+j" aria-expanded="true" aria-controls="'collapseExample'+j" >
+        <tr >
+          <td div class="box-message-td">
+            {{email.subject}}
+            <br>
+            <div class="hidden-fild">
+              <span> <b> Atualização:</b> {{email.date | date:"dd/MM/yyyy H:mm"}}</span>
+            </div>
+          </td>
+          <td class="hidden">{{email.emailaddress}}</td>
+          <td class="hidden"><div class="box-message-td">{{email.message}}</div></td>
+          <td class="hidden">{{email.date | date:"dd/MM/yyyy H:mm"}}</td>
+          <td>
+            <a class="btn btn-danger mr-1" (click)="modalDeleteEmail(email)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" (click)="modalEditEmail(email)"><i   class="fa fa-edit"></i></a>
+          </td>
+        </tr>
+        <tr [attr.id]="'collapseExample'+j"  class="collapse" aria-labelledby="'headingOne'+j" data-parent="#accordion">
+          <td colspan="100%">
+            <div class="card">
+              <div id="accordion" ></div>
+              <div class="row no-gutters">
+                <div class="col-sm-4">
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>Endereço do e-email:</b>
+                        {{email.emailaddress}}
+                      </li>
+                      <li class="list-group-item"><b>Assunto:</b>
+                        {{email.subject}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <p class="box-message">{{email.message}}</p>
+               </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+    <!--Modal add email-->
+    <div #editEmailModal class="modal fade" id="addEmailModal" tabindex="-1" aria-labelledby="addEmailModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header badge-primary">
+            <h5 *ngIf="!editEmail"  class="modal-title" id="addEmailModalLabel">Novo e-email</h5>
+            <h5 *ngIf="editEmail" class="modal-title" id="addEmailModalLabel">Editar e-email</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelEmail()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formEmail">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="e-mails destinatários" formControlName="recipients">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control"  placeholder="Assunto" formControlName="subjectEmail">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control textarea-message"  placeholder="Menssagem" formControlName="message"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelEmail()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="saveEmail()">Salvar e-mail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--Modal delete email-->
+<div #deleteEmailModal class="modal fade" id="deleteEmailModal" tabindex="-1" aria-labelledby="deleteEmailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header badge-danger">
+        <h5 class="modal-title" id="deleteEmailModalLabel">Confirmação de exclusão</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Certeza da exclusão desse email: {{subjectEmail}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="deleteEmail()" >Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spinner de load-->
+<div class="spinner" *ngIf="loadSpinner"></div>
+

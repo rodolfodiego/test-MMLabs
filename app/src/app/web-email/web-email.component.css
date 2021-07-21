@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+
+.body-full{
+  background: linear-gradient(45deg, #596b83 0%, #babebd 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mmlabs{
+  font-size: 30px;
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+  margin: 60px;
+}
+.add-search{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.add-search button{
+  border-radius: 25px;
+}
+.hidden-fild{
+  display: none;
+  margin-top: 5px;
+}
+.modal-header {
+  border-top-left-radius: calc(1.3rem - 1px) !important;
+  border-top-right-radius: calc(1.3rem - 1px) !important;
+}
+.modal-content {
+  border-radius: 1.3rem !important;
+}
+.modal-title{
+  font-size: 20px;
+}
+.textarea-message{
+  height: 15rem;
+}
+table {
+  font-family: arial;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.table th,
+.table td {
+  font-weight: normal;
+  padding: 8px 15px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid #dddddd;
+}
+.table thead th {
+  background: #eeeeee;
+  vertical-align: bottom;
+}
+.table tbody > tr:nth-child(odd) > td,
+.table tbody > tr:nth-child(odd) > th {
+  background-color: #fafafa;
+  cursor: pointer;
+}
+.table .t-small {
+  width: 5%;
+}
+.table .t-medium {
+  width: 15%;
+}
+.table .t-status {
+  font-weight: bold;
+}
+.table .t-active {
+  color: #46a546;
+}
+.table .t-inactive {
+  color: #e00300;
+}
+.table .t-draft {
+  color: #f89406;
+}
+.table .t-scheduled {
+  color: #049cdb;
+}
+.box-message-td{
+  margin-bottom: 10px;
+  height: 1.5rem;
+  overflow: hidden;
+}
+.box-message{
+  border: 1px solid rgb(169, 173, 177);
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(217, 222, 226);
+}
+@media (max-width: 780px) {
+  .mmlabs{
+    font-size: 14px;
+    margin: 30px;
+  }
+  .add-search{
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-search button{
+    width: 60%;
+    margin-bottom: 10px;
+  }
+  .hidden{
+    display: none;
+  }
+  .hidden-fild{
+    display: inline;
+  }
+  .card-body{
+    padding: 0 !important;
+  }
+}
