@@ -6,7 +6,7 @@
 
 A api esta configurada para fazer consulta no SGB MySql.
 
-Um modo mais prático de usar esse SGBD é utilizando umas das ferramentas de pacotes de servidores de código aberto no mercado, uma dessas ferramentas é o  XAMPP, que pode ser baixado  aqui [Instalador](https://getcomposer.org)
+Um modo mais prático de usar esse SGBD é utilizando umas das ferramentas de pacotes de servidores de código aberto no mercado, uma dessas ferramentas é o  XAMPP, que pode ser baixado  aqui [Instalador](https://www.apachefriends.org/pt_br/index.html)
 
 Com a instalação da ferramenta XAMPP vem o aplicativo phpMyAdmin. Depois de startar o XAMMP no caminho ```http://localhost/phpmyadmin/index.php``` você poderá a aplicação phpMyAdmin.
 
